@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prenota il tuo tavolo</title>
+  
+  <link rel="stylesheet" href="/static/styles.css">
+    
+</head>
+<body>
+  <section class="hero">
+    <div class="overlay">
+      <h1>Pub</h1>
+      <p>Atmosfera ed eventi sportivi live da vivere in compagnia!.</p>
+    </div>
+  </section>
+
+  <div class="form-container">
+      <section class="booking-form">
+        <div class="horizontal-container">   
+          <div class="people-selector">
+            <label for="persone">Numero di persone:</label>
+            <div class="counter">
+              <button class="minus">−</button>
+              <span id="count">2</span>
+              <button class="plus">+</button>
+            </div>
+          </div> 
+          <div class="giorni-selector">
+            <label>Data:</label>
+            <button id="giornoSelezionato">Seleziona il giorno:</button>
+            <div id="giorniDropdown" class="dropdown hidden"> 
+            </div>
+          </div>
+        </div>  
+        <div class="form-group">
+          <label>Fascia oraria:</label>
+          <div class="fasce-orarie" id="fasce-orarie">
+            <button>19:00</button>
+            <button>19:30</button>
+            <button>20:00</button>
+            <button>20:30</button>
+          </div>
+        </div>
+
+        <button id="vedi-tavoli">Vedi tavoli disponibili</button>
+        <div id="modifica-form" class="hidden">
+          <p>Inserisci la tua email per ricevere il link per modificare la tua prenotazione:</p>
+          <input class="email" type="email" id="emailModifica" placeholder="Email">
+          <button class="button" id="inviaLinkModifica">Invia link</button>
+          <div id="messaggioModifica"></div>
+        </div>
+        <p>
+          <a href="#" id="mostraModifica">Vuoi modificare una prenotazione?</a>
+        </p>
+
+      </section>
+  </div>
+  <script src="/static/scripts.js"></script>
+</body>
+</html>

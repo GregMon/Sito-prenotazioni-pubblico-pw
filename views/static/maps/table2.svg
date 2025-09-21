@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
+  <!-- Tavolo -->
+  <rect x="50" y="55" width="40" height="30" rx="6" fill="#875E1D" stroke="#111" stroke-width="2"/>
+  <!-- Sedie ai lati lunghi, centrate verticalmente -->
+  <rect x="20" y="60" width="20" height="20" rx="3" fill="#875E1D" stroke="#111" stroke-width="1.5"/>
+  <rect x="100" y="60" width="20" height="20" rx="3" fill="#875E1D" stroke="#111" stroke-width="1.5"/>
+</svg>

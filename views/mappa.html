@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <title>Seleziona il tavolo</title>
+    <link rel="stylesheet" href="/static/map.css">
+  <h1 class="header">Seleziona il tavolo che preferisci</h1>
+  <p class="header">Puoi prenotare uno dei tavoli disponibili cliccandoci sopra.</p>
+</head>
+<body>
+  <div class="layout">
+    <div id="mappa-container">
+      <img src="/static/maps/planimetria.svg" alt="Planimetria" />
+    </div>
+    
+    <form id="formPrenotazione" action="/api/prenotazioni" method="POST">
+      <div id="feedback-tavolo" class="feedback-tavolo hidden"></div>
+      <h2>Inserisci i dati relativi alla tua prenotazione</h2>
+
+      <div class="campo">
+        <input type="text" name="nome" required placeholder=" " />
+        <label for="nome">Nome</label>
+      </div>
+
+      <div class="campo">
+        <input type="email" name="email" required placeholder=" " />
+        <label for="email">Email</label>
+      </div>
+
+      <div class="g-recaptcha" data-sitekey="6LeiBs4rAAAAAKO_r1r_B6GCpzXSwxHNTLgHYstv"></div>
+
+      <button type="submit">Conferma</button>
+      <div id="risultato" class="risultato"></div>
+    </form>
+  </div>
+
+  
+  <script type="module" src="/static/prenotazione.js"></script>
+</body>
+
+</html>

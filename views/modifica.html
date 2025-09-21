@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifica Prenotazione</title>
+  <link rel="stylesheet" href="/static/map.css">
+  <link rel="stylesheet" href="/static/modifica.css">
+  <h1 class="header">Modifica la tua prenotazione</h1>
+  <p class="header">Puoi cambiare data, ora, numero di persone e selezionare un tavolo differente.</p>
+</head>
+<body>
+  <div class="modifica-layout">
+    <form id="formPrenotazione" method="POST" action="/api/modifica_prenotazione">
+      
+      <div class="layout-riga">
+        
+        <div class="mappa-wrapper">
+          <div id="mappa-container">
+            <img src="/static/maps/planimetria.svg" alt="Planimetria" />
+          </div>
+          <div id="feedback-tavolo" class="hidden"></div>
+        </div>
+        
+        <div class="form-wrapper">
+          <section class="booking-form">
+            <div class="horizontal-container">   
+              <div class="people-selector">
+                <label for="persone">Numero di persone:</label>
+                <div class="counter">
+                  <button type="button" class="minus">−</button>
+                  <span id="count">2</span>
+                  <button type="button" class="plus">+</button>
+                </div>
+              </div> 
+              <div class="giorni-selector">
+                <label>Data:</label>
+                <div class="selettore-giorno-wrapper">
+                  <button type="button" id="giornoSelezionato">Seleziona il giorno:</button>
+                  <div id="giorniDropdown" class="dropdown hidden"></div>
+                </div>
+              </div>
+            </div>  
+
+            <div class="form-group">
+              <label>Fascia oraria:</label>
+              <div class="fasce-orarie" id="fasce-orarie">
+                <button type="button">19:00</button>
+                <button type="button">19:30</button>
+                <button type="button">20:00</button>
+                <button type="button">20:30</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" name="nome" readonly>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" name="email" readonly>
+            </div>
+            <div class="submit-wrapper">
+              <button type="submit">Conferma Modifica</button>
+            </div>
+            
+          </section>
+        </div>
+
+        
+      </div>
+
+      
+      <div id="risultato" class="form-result"></div>
+      <div id="dettagli-prenotazione"></div>
+
+      
+    </form>
+
+    <button type="button" id="annulla-btn" class="btn-danger">Annulla prenotazione</button>
+  </div>
+
+  <script id="prenotazione-data" type="application/json">
+    {{ prenotazione_json | safe }}
+  </script>
+  <script type="module" src="/static/modifica.js"></script>
+</body>
+</html>

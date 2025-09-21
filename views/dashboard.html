@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/admin.css" />
+  <title>Dashboard Admin</title>
+</head>
+<body>
+  <main>
+    <div class="monitoring-container">
+        <section id="utenti">
+          <h2>Lista Utenti</h2>
+          <div class="utenti-container" id="lista-utenti">
+            
+          </div>
+        </section>
+
+      <section id="prenotazioni">
+        <h2>Prenotazioni</h2>
+        <div class="chat-container" id="lista-prenotazioni">
+          
+        </div>
+      </section>
+
+    </div>
+    
+    <section id="gestione-mappa">
+        <h2>Modifica Mappa Tavoli</h2>
+        <div id="mappa-admin" class="mappa-container">
+          <img src="/static/maps/planimetria.svg" alt="Planimetria" />
+        </div>
+
+        <div id="feedback-tavolo" class="hidden"></div>
+
+        <div id="pannello-modifica" class="pannello hidden">
+          <h3>Modifica TV</h3>
+          <div id="modifica-info"></div>
+          <button id="btn-ruota-tv">Ruota TV</button>
+          <button id="btn-chiudi-pannello">Chiudi</button>
+        </div>
+
+        <button id="btn-salva-mappa" class="hidden">Salva mappa</button>
+
+      </section>
+      
+  </main>
+
+  <script type="module" src="/static/admin.js"></script>
+</body>
+</html>

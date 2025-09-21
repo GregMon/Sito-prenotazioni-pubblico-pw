@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
+  <!-- Tavolo -->
+  <rect x="45" y="55" width="50" height="30" rx="6" fill="#875E1D" stroke="#111" stroke-width="2"/>
+  <!-- Sedie sopra/sotto -->
+  <rect x="60" y="25" width="20" height="20" rx="3" fill="#875E1D" stroke="#111" stroke-width="1.5"/>
+  <rect x="60" y="95" width="20" height="20" rx="3" fill="#875E1D" stroke="#111" stroke-width="1.5"/>
+  <!-- Sedie ai lati -->
+  <rect x="15" y="60" width="20" height="20" rx="3" fill="#875E1D" stroke="#111" stroke-width="1.5"/>
+  <rect x="105" y="60" width="20" height="20" rx="3" fill="#875E1D" stroke="#111" stroke-width="1.5"/>
+</svg>

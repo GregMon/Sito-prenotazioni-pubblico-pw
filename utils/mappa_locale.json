@@ -1,0 +1,42 @@
+{
+  "elementi": [
+    {
+      "id": "tv-1",
+      "tipo": "tv",
+      "svg": "tv.svg",
+      "x": 850,
+      "y": 30,
+      "rotazione": 0
+    },
+    {
+      "id": "tavolo-2a",
+      "tipo": "tavolo",
+      "posti": 2,
+      "svg": "/static/maps/table2.svg",
+      "x": 100,
+      "y": 100,
+      "rotazione": 90,
+      "stato": "libero"
+    },
+    {
+      "id": "tavolo-4b",
+      "tipo": "tavolo",
+      "posti": 4,
+      "svg": "/static/maps/table4.svg",
+      "x": 300,
+      "y": 150,
+      "rotazione": 0,
+      "stato": "libero"
+    },
+    {
+      "id": "tavolo-6c",
+      "tipo": "tavolo",
+      "posti": 6,
+      "svg": "/static/maps/table6.svg",
+      "x": 600,
+      "y": 200,
+      "rotazione": 270,
+      "stato": "libero"
+    }
+  ]
+}

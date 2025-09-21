@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Prenotazione</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Gestione prenotazione</h1>
+    <p id="info">Verifica in corso...</p>
+    <div id="messaggio"></div>
+
+    <form id="modificaForm" method="POST" action="/pagina_di_modifica" style="display:none;">
+        <input type="hidden" name="token" id="tokenModifica">
+    </form>
+
+    <script>
+        const token = window.location.hash.slice(1);
+        const info = document.getElementById('info');
+        const messaggio = document.getElementById('messaggio');
+        const modificaForm = document.getElementById('modificaForm');
+        const tokenInput = document.getElementById('tokenModifica');
+
+        if(!token) {
+            info.innerText = "Token non trovato nell'URL.";
+        } else {
+            // Rimuove il fragment dalla barra degli indirizzi
+            window.location.hash = '';
+
+            if(token.startsWith('C_')) {
+                // Conferma tramite fetch POST
+                info.innerText = "Token rilevato. Conferma in corso...";
+
+                fetch('/api/confermaToken', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({ token: token })
+                })
+                .then(response => response.json().catch(() => null))
+                .then(data => {
+                    info.style.display = 'none';
+                    if(data) {
+                        if(data.message) {
+                            messaggio.innerText = "La tua prenotazione è stata confermata con successo!";
+                        } else if(data.error) {
+                            messaggio.innerText = " Errore: " + data.error;
+                        } else {
+                            messaggio.innerText = "Operazione completata.";
+                        }
+                    } else {
+                        messaggio.innerText = "Operazione completata.";
+                    }
+                })
+                .catch(() => messaggio.innerText = "Errore di connessione al server.");
+
+            } else if(token.startsWith('M_')) {
+                // redirect
+                info.innerText = "Token rilevato. Reindirizzamento alla pagina di modifica...";
+                tokenInput.value = token;
+                modificaForm.submit();
+            } else {
+                info.innerText = "Token non valido o prenotazione già confermata.";
+            }
+        }
+    </script>
+</body>
+</html>

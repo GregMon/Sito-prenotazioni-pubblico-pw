@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+  <!-- Pavimento bianco -->
+  <rect x="0" y="0" width="1000" height="600" fill="none"/>
+
+  <!-- Muri -->
+  <!-- muro alto -->
+  <rect x="0" y="0" width="1000" height="20" fill="grey"/>
+  
+  <!-- muro sinistro -->
+  <rect x="0" y="0" width="20" height="600" fill="grey"/>
+  
+  <!-- muro destro -->
+  <rect x="980" y="0" width="20" height="600" fill="grey"/>
+  
+  <!-- muro basso sinistra -->
+  <rect x="0" y="580" width="400" height="20" fill="grey"/>
+  
+  <!-- muro basso destra -->
+  <rect x="600" y="580" width="400" height="20" fill="grey"/>
+  
+  <!-- rientranza ingresso: lasciamo vuoto tra x=400 e x=600 -->
+</svg>

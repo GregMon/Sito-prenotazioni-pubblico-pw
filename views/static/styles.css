@@ -1,0 +1,376 @@
+/* CSS della HOMEPAGE */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #F3E2C7;
+  color: #333;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #F3E2C7 inset !important;
+  -webkit-text-fill-color: #000 !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.hero {
+  width: 100%;
+  min-height: 50vh;
+  background-image: url('background2.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 8px;
+  min-width: 400px;
+  width: 100%;
+  margin: 0 auto; 
+  box-sizing: border-box;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
+  margin: 40px auto;
+  padding: 0 20px;
+  
+  box-sizing: border-box;
+}
+
+.booking-form {
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  background: #EACD9E;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: -20%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* contenitore per posizionare orizzontalmente gli elementi */
+.horizontal-container {
+  display: flex;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  background: #EACD9E;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.people-selector,
+.giorni-selector,
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+label {
+  display: block;           
+  text-align: center;       
+  width: 100%;              
+  margin-bottom: 6px;
+  color: #150F04;    
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  border-radius: 8px;
+}
+
+#giornoSelezionato {
+  padding: 10px;
+  background-color: #EACD9E;
+  color: black;
+  border-color: #b87f26;
+  box-sizing: border-box;
+  border-width: 3px;
+  border-style: solid;
+  cursor: pointer;
+  text-align: center;
+  width: 90%;
+  max-width: 160px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 180px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background-color: #F3E2C7;
+  z-index: 100;
+  padding: 10px;
+  width: 90%;
+  max-width: 160px;
+}
+
+.dropdown.hidden {
+  display: none !important;
+}
+
+.dropdown button {
+  padding: 8px;
+  background-color: #D1932E;
+  border: none;
+  
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.dropdown button:hover {
+  background-color: #b87f26;
+}
+
+.dropdown button.active {
+  background-color: #150F04;
+  color: white;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.giorni-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.fasce-orarie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+#mostraModifica{
+  color: #150F04;
+}
+
+.fasce-orarie button {
+  width: 100px;
+  padding: 10px;
+  background-color: #EACD9E;
+  color: black;
+  border-color: #b87f26;
+  box-sizing: border-box;
+  
+  border-width: 3px;
+  border-style: solid;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #EACD9E;
+  color: #333;
+}
+button:disabled:hover {
+  background-color: #EACD9E;
+  color: #333;
+}
+
+
+.fasce-orarie button.active {
+  background-color: #EACD9E;
+  border-color: #150F04;
+  border-width: 3px;
+  color: black;
+  border-style: solid;
+}
+
+/* Counter */
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: auto;
+}
+
+.counter button {
+  color: #150F04;
+  background: #EACD9E;
+  border: none;
+  font-size: 25px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.counter button:hover {
+  background-color: #EACD9E;
+}
+
+#count {
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 24px;
+  text-align: center;
+}
+
+.email{
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background: none;
+}
+
+.button{
+  margin-top: 2%;
+  width: 100px;
+  padding: 10px;
+  background-color: #EACD9E;
+  color: black;
+  border-color: #b87f26;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-style: solid;
+}
+
+/* Animazione tasti + e - */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Classe temporanea */
+.pulsing {
+  animation: pulse 200ms ease-in-out;
+}
+
+/* Pulsante finale */
+#vedi-tavoli {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  background-color: #b87f26;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#vedi-tavoli:hover {
+  background-color: #150F04;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 40vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .form-container {
+    margin-top: -5%;
+  }
+
+  .overlay {
+    font-size: 0.9rem;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .giorni button,
+  .fasce-orarie button {
+    width: 45%;
+  }
+
+  .overlay,
+  .form-container {
+    min-width: unset;
+    max-width: 100%;
+    padding: 10px;
+}
+
+  #vedi-tavoli {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .counter {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .counter button {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+  }
+}

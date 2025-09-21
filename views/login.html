@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/admin.css">
+  <title>Login Dashboard Amministratore</title>
+</head>
+<body>
+  <h2 id="Header">Inserisci le credenziali di amministratore</h2>
+
+  <div class="formContainer">
+    <div id="loginAdmin">
+      <form id="formLogin" action="javascript:void(0);">
+        <label>
+          Email:
+          <input type="email" name="email" required placeholder="Inserisci la tua email di amministratore">
+        </label><br>
+        <label>
+          Password:
+          <input type="password" name="password" required placeholder="Inserisci la password">
+        </label><br>
+        <button type="submit">Conferma</button>
+      </form>
+    </div>
+
+    <div id="changePassword" style="display:none;">
+      <form id="formPassword" action="javascript:void(0);">
+        <input type="hidden" name="email" id="email-hidden">
+        <label>
+          Nuova Password:
+          <input type="password" name="new_password" required placeholder="Inserisci la nuova password">
+        </label><br>
+        <button type="submit">Cambia Password</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <div id="messaggio" style="color: red;"></div>
+
+  <script>
+  // LOGIN ADMIN
+  document.getElementById('formLogin').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('messaggio').textContent = "";
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log("Tentativo di login con:", email, password);
+
+    fetch('/api/admin/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    })
+    .then(response => response.json().then(data => ({ status: response.status, body: data })))
+    .then(({ status, body }) => {
+      console.log("Risposta login:", status, body);
+
+      if (status >= 400) {
+        document.getElementById('messaggio').textContent = body.msg || "Errore di autenticazione";
+      } if (status === 403 && body.msg.toLowerCase().includes("cambia la password")) {
+        document.getElementById('loginAdmin').style.display = 'none';
+        document.getElementById('changePassword').style.display = 'block';
+        document.getElementById('email-hidden').value = email;
+        document.getElementById('Header').textContent = "Modifica la password per il primo accesso";
+      } else if (body.success) {
+        alert("Login effettuato con successo");
+        window.location.href = '/api/admin/dashboard';
+      } else {
+        document.getElementById('messaggio').textContent = body.msg || "Accesso non autorizzato.";
+      }
+    })
+    .catch(err => {
+      console.error("Errore di rete durante il login:", err);
+      document.getElementById('messaggio').textContent = "Errore di rete: " + err.message;
+    });
+  });
+
+  // CAMBIO PASSWORD
+  document.getElementById('formPassword').addEventListener('submit', function(e) {
+    console.log("Intercettato submit");
+    e.preventDefault();
+    document.getElementById('messaggio').textContent = "";
+
+    const email = document.getElementById('email-hidden').value;
+    const password = document.querySelector('#formPassword input[name="new_password"]').value;
+
+    console.log("Invio richiesta cambio password per:", email, "Nuova password:", password);
+
+    fetch('/api/admin/change_password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    })
+    .then(response => response.json().then(data => ({ status: response.status, body: data })))
+    .then(({ status, body }) => {
+      console.log("Risposta cambio password:", status, body);
+
+      if (status >= 400) {
+        document.getElementById('messaggio').textContent = body.msg || "Errore nel cambio password";
+      } else if (body.success) {
+        alert(body.msg || "Password cambiata con successo");
+        window.location.href = "/login";
+      } else {
+        document.getElementById('messaggio').textContent = body.msg || "Errore imprevisto.";
+      }
+    })
+    .catch(err => {
+      console.error("Errore di rete durante il cambio password:", err);
+      document.getElementById('messaggio').textContent = "Errore di rete: " + err.message;
+    });
+  });
+</script>
+</body>
+</html>
